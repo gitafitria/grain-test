@@ -34,7 +34,7 @@
 
         ```$ bin/setup```
     - Run the project to make sure eveything runs well by running this command `$ rails s`
-        ![alt text](../grain-test/public/readme-assets/Screenshot%202023-12-22%20at%2019.23.19.png)
+        ![Graphql page](https://github.com/gitafitria/grain-test/blob/main/public/readme-assets/Screenshot%202023-12-22%20at%2019.23.19.png)
 
 
 

@@ -1,7 +1,7 @@
 class CreateMenus < ActiveRecord::Migration[7.1]
   def change
-    create_table :menus do |t|
-      t.string :identifier
+    create_table :menus, id: false, force: true do |t|
+      t.string :identifier, primary_key: true
       t.string :label
       t.string :state
       t.date :start_date
@@ -9,5 +9,6 @@ class CreateMenus < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+    add_index :menus, [:identifier], unique: true
   end
 end

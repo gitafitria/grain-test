@@ -184,3 +184,17 @@
     ```
 
     Then, run the migration by using this script in terminal `rails db:migrate`
+
+## Wednesday, Dec 26, 2023 (3 hours)
+
+### TL; TR;
+> Checking the migration results, generate the models and define the associations for each models, bug fix how to create tables as similar as the ERD.
+
+- Checking the migration results, it turned out the generated tables are using `id` as primary key, in this case I need to find a way to use `identifier` as primary key of the tables.
+    - found the solution using GPT, but failed to migrate the tables with references, with error related to `unique constraint in Menu tables`, then adding index as the unique constraint in all migration files
+    - found another issue with error related to `foreign key not match 'bigInt' and 'varchar'`, then I realize the issue is because I did't state the reference as type of string
+- Adding associations to table while checking it with dummy data.
+    - failed to create Item as Component with error `'product_id' is not found`, then found the solution in GPT by adding attribute `product_id` and foreign_key to `product_id` thus Component will not check `product_id` column in Item table.
+        - <b>?</b> Now success creating the Item as Component, but confuse how to fetch product in the future since the value does not store in the DB
+    - failed to create Modifier, because the record with specific item_id and modifier_group_id already exists, to differentiate the Modifier I decided to add new column called `label`, not only to differentiate each modifier option, but also to make descriptive options. After adding `label` column, I updated the index by adding `label` as index.
+    - <b>All dummy data has been successfully stored to DB, but still need to add validation for each models.</b>

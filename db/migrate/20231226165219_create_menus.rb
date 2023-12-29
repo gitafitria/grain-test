@@ -3,7 +3,7 @@ class CreateMenus < ActiveRecord::Migration[7.1]
     create_table :menus, id: false, force: true do |t|
       t.string :identifier, primary_key: true
       t.string :label
-      t.string :state
+      t.string :state, null: false
       t.date :start_date
       t.date :end_date
 

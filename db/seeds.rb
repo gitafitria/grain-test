@@ -1,3 +1,8 @@
+Menu.destroy_all
+Section.destroy_all
+ModifierGroup.destroy_all
+Item.destroy_all
+
 # Creating Menu
 menu = Menu.create(identifier: 'pizza_menu', label: 'Pizza Menu', state: 'published', start_date: Date.today, end_date: Date.today + 30)
 

@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_26_165621) do
   end
 
   create_table "items", primary_key: "identifier", id: :string, force: :cascade do |t|
-    t.string "type"
+    t.string "type", null: false
     t.string "label"
     t.string "description"
     t.float "price"
@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_26_165621) do
 
   create_table "menus", primary_key: "identifier", id: :string, force: :cascade do |t|
     t.string "label"
-    t.string "state"
+    t.string "state", null: false
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", null: false

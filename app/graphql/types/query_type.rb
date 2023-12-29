@@ -2,30 +2,81 @@
 
 module Types
   class QueryType < Types::BaseObject
-    field :node, Types::NodeType, null: true, description: "Fetches an object given its ID." do
-      argument :id, ID, required: true, description: "ID of the object."
+
+    # ==== Menu ====
+    field :menus, [Types::MenuType], null: false
+    def menus
+      Menu.all
     end
 
-    def node(id:)
-      context.schema.object_from_id(id, context)
+    field :menu, Types::MenuType, null: false do
+      argument :id, String, required: true
+    end
+    def menu(id:)
+      Menu.find(id)
     end
 
-    field :nodes, [Types::NodeType, null: true], null: true, description: "Fetches a list of objects given a list of IDs." do
-      argument :ids, [ID], required: true, description: "IDs of the objects."
+    # ==== Section ====
+    field :sections, [Types::SectionType], null: false
+    def sections
+      Section.all
     end
 
-    def nodes(ids:)
-      ids.map { |id| context.schema.object_from_id(id, context) }
+    field :section, Types::SectionType, null: false do
+      argument :id, String, required: true
+    end
+    def section(id:)
+      Section.find(id)
     end
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
+    # ==== Item ====
+    field :items, [Types::ItemType], null: false
+    def items
+      Item.all
+    end
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    field :item, Types::ItemType, null: false do
+      argument :id, String, required: true
+    end
+    def item(id:)
+      Item.find(id)
+    end
+
+    field :products, [Types::ProductType], null: false
+    def products
+      Product.all
+    end
+
+    field :product, Types::ProductType, null: false do
+      argument :id, String, required: true
+    end
+    def product(id:)
+      Product.find(id)
+    end
+
+    field :components, [Types::ComponentType], null: false
+    def components
+      Component.all
+    end
+
+    field :component, Types::ComponentType, null: false do
+      argument :id, String, required: true
+    end
+    def component(id:)
+      Component.find(id)
+    end
+
+    # ==== ModifierGroup ====
+    field :modifier_groups, [Types::ModifierGroupType], null: false
+    def modifier_groups
+      ModifierGroup.all
+    end
+
+    field :modifier_group, Types::ModifierGroupType, null: false do
+      argument :id, String, required: true
+    end
+    def modifier_group(id:)
+      ModifierGroup.find(id)
     end
   end
 end

@@ -1,6 +1,8 @@
 class Modifier < ApplicationRecord
+  default_scope { order(display_order: :asc) }
+
   belongs_to :modifier_group
-  belongs_to :item, foreign_key: 'item_id'
+  belongs_to :item, foreign_key: 'item_id', dependent: :destroy
 
   validates :item_id, uniqueness: { scope: :modifier_group_id, message: "combination already exists" }
 

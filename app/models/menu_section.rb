@@ -1,4 +1,6 @@
 class MenuSection < ApplicationRecord
+  default_scope { order(display_order: :asc) }
+
   belongs_to :menu
   belongs_to :section
 

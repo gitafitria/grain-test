@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_27_140753) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_26_165621) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "item_modifier_groups", id: false, force: :cascade do |t|
+  create_table "item_modifier_groups", force: :cascade do |t|
     t.string "item_id", null: false
     t.string "modifier_group_id", null: false
     t.datetime "created_at", null: false
@@ -36,10 +36,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_27_140753) do
   create_table "menu_sections", force: :cascade do |t|
     t.string "menu_id", null: false
     t.string "section_id", null: false
-    t.integer "display_order"
+    t.integer "display_order", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_id", "section_id"], name: "index_menu_sections_on_menu_id_and_section_id", unique: true
     t.index ["menu_id"], name: "index_menu_sections_on_menu_id"
     t.index ["section_id"], name: "index_menu_sections_on_section_id"
   end
@@ -63,28 +62,25 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_27_140753) do
     t.index ["identifier"], name: "index_modifier_groups_on_identifier", unique: true
   end
 
-  create_table "modifiers", id: false, force: :cascade do |t|
+  create_table "modifiers", force: :cascade do |t|
     t.string "item_id", null: false
     t.string "modifier_group_id", null: false
-    t.integer "display_order"
-    t.integer "default_quantity"
+    t.integer "display_order", default: 0
+    t.integer "default_quantity", default: 0
     t.float "price_override"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "label"
-    t.index ["item_id", "modifier_group_id", "label"], name: "index_modifiers_on_item_id_and_modifier_group_id_and_label", unique: true
     t.index ["item_id"], name: "index_modifiers_on_item_id"
     t.index ["modifier_group_id"], name: "index_modifiers_on_modifier_group_id"
   end
 
-  create_table "section_items", id: false, force: :cascade do |t|
+  create_table "section_items", force: :cascade do |t|
     t.string "section_id", null: false
     t.string "item_id", null: false
-    t.integer "display_order"
+    t.integer "display_order", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_section_items_on_item_id"
-    t.index ["section_id", "item_id"], name: "index_section_items_on_section_id_and_item_id", unique: true
     t.index ["section_id"], name: "index_section_items_on_section_id"
   end
 

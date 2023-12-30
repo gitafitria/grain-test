@@ -1,5 +1,13 @@
 # README
 
+For this test, I came up with these plan:
+- Understand the requirement
+- Create a project with the table migration, validation, and association
+- Testing it with dummy data
+- Generate the graphql
+- Deploy (whether its complete or not)
+
+
 ## Friday, Dec 22, 2023 (1 hours)
 
 ### TL; TR;
@@ -198,3 +206,110 @@
         - <b>?</b> Now success creating the Item as Component, but confuse how to fetch product in the future since the value does not store in the DB
     - failed to create Modifier, because the record with specific item_id and modifier_group_id already exists, to differentiate the Modifier I decided to add new column called `label`, not only to differentiate each modifier option, but also to make descriptive options. After adding `label` column, I updated the index by adding `label` as index.
     - <b>All dummy data has been successfully stored to DB, but still need to add validation for each models.</b>
+
+## Friday, Dec 29, 2023 (2 hours)
+
+### TL; TR;
+> Generate the graphql object for each model including the query
+
+- Generating the object for each model using this command
+    ```
+    rails g graphql:object menu
+    ```
+    ```
+    rails g graphql:object section
+    ```
+    ```
+    rails g graphql:object item
+    ```
+    ```
+    rails g graphql:object modifier_group
+    ```
+    ```
+    rails g graphql:object menu_section
+    ```
+    ```
+    rails g graphql:object section_item
+    ```
+    ```
+    rails g graphql:object modifier
+    ```
+    ```
+    rails g graphql:object item_modifier_group
+    ```
+
+## Saturday, Dec 30, 2023 (1 hours)
+
+### TL; TR;
+> Generate the graphql model input for each model and also the CUD mutation of it. Deploy the project to heroku.
+
+- Generate the graphql input using this command
+
+    ```
+    rails g graphql:input menu
+    ```
+    ```
+    rails g graphql:input section
+    ```
+    ```
+    rails g graphql:input item
+    ```
+    ```
+    rails g graphql:input modifier_group
+    ```
+    ```
+    rails g graphql:input menu_section
+    ```
+    ```
+    rails g graphql:input section_item
+    ```
+    ```
+    rails g graphql:input modifier
+    ```
+    ```
+    rails g graphql:input item_modifier_group
+    ```
+
+- Generate the graphql mutation using this command
+
+    ```
+    rails g graphql:mutation_create menu
+    rails g graphql:mutation_update menu
+    rails g graphql:mutation_delete menu
+    ```
+
+    ```
+    rails g graphql:mutation_create section
+    rails g graphql:mutation_update section
+    rails g graphql:mutation_delete section
+    ```
+
+    ```
+    rails g graphql:mutation_create item
+    rails g graphql:mutation_update item
+    rails g graphql:mutation_delete item
+    ```
+
+    ```
+    rails g graphql:mutation_create modifier_group
+    rails g graphql:mutation_update modifier_group
+    rails g graphql:mutation_delete modifier_group
+    ```
+
+    ```
+    rails g graphql:mutation_create menu_section
+    rails g graphql:mutation_update menu_section
+    rails g graphql:mutation_delete menu_section
+    ```
+
+    ```
+    rails g graphql:mutation_create section_item
+    rails g graphql:mutation_update section_item
+    rails g graphql:mutation_delete section_item
+    ```
+
+    ```
+    rails g graphql:mutation_create modifier
+    rails g graphql:mutation_update modifier
+    rails g graphql:mutation_delete modifier
+    ```

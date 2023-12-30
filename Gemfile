@@ -70,5 +70,6 @@ group :test do
 end
 
 gem 'graphql'
-gem 'graphiql-rails', group: :development
+# for grain-test purpose
+gem 'graphiql-rails'
 gem 'dotenv-rails'
